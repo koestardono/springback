@@ -19,5 +19,5 @@ public class AuthController {
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
 	
-	//coba tes
+	//coba tes wadoh berubah
 }
