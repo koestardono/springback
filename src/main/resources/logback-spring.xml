@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+		<!-- appender -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyyMMdd HH:mm:ss.SSS}|${PID}|[%t]|%c{1}|%-5p|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="perpus-backend-system"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/data/logs/perpus/backend/system.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>
+				/data/logs/perpus/backend/system.%d{yyyy-MM-dd}.%i.log.gz
+			</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyyMMdd HH:mm:ss.SSS}|${PID}|[%t]|%c{1}|%-5p|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="perpus-backend-spring"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/data/logs/perpus/backend/spring.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>
+				/data/logs/perpus/backend/spring.%d{yyyy-MM-dd}.%i.log.gz
+			</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyyMMdd HH:mm:ss.SSS}|${PID}|[%t]|%c{1}|%-5p|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="perpus-backend-api"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/data/logs/perpus/backend/api.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>
+				/data/logs/perpus/backend/api.%d{yyyy-MM-dd}.%i.log.gz
+			</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyyMMdd HH:mm:ss.SSS}|${PID}|[%t]|%c{1}|%-5p|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="perpus-backend-http"
+    	class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/data/logs/perpus/backend/http.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>
+				/data/logs/perpus/backend/http.%d{yyyy-MM-dd}.%i.log.gz
+			</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyyMMdd HH:mm:ss.SSS}|${PID}|[%t]|%c{1}|%-5p|%m%n</pattern>
+		</encoder>
+    </appender>
+    <appender name="perpus-backend-all"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/data/logs/perpus/backend/perpus-backend-support.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>
+				/data/logs/perpus/backend/perpus-backend-support.%d{yyyy-MM-dd}.%i.log.gz
+			</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyyMMdd HH:mm:ss.SSS}|${PID}|[%t]|%c{1}|%-5p|%m%n</pattern>
+		</encoder>
+	</appender>
+	<!-- logger 
+    <logger name="train.perpusbackend.util.DoogiesRequestLogger" level="DEBUG" additivity="false">
+        <appender-ref ref="perpus-backend-api"/>
+    </logger>
+	<logger name="train.perpusbackend" level="DEBUG" additivity="false">
+		<appender-ref ref="perpus-backend-system" />
+	</logger>
+	<logger name="train.perpusbackend" level="DEBUG" additivity="false">
+		<appender-ref ref="perpus-backend-system" />
+	</logger>
+	<logger name="org.springframework" level="DEBUG" additivity="false">
+		<appender-ref ref="perpus-backend-spring" />
+	</logger>
+	<logger name="org.mybatis.spring" level="DEBUG" additivity="false">
+		<appender-ref ref="perpus-backend-spring" />
+	</logger>
+	<logger name="java.sql" level="DEBUG" additivity="false">
+		<appender-ref ref="perpus-backend-system" />
+	</logger>
+    <logger name="org.apache.http" level="DEBUG" additivity="false">
+        <appender-ref ref="perpus-backend-http"/>
+    </logger>
+    -->
+ 
+    <!--  ini log dijadikan 1 -->
+    <logger name="org.springframework.boot.SpringApplication" level="INFO" additivity="false">
+		<appender-ref ref="perpus-backend-all" />
+	</logger>
+    <logger name="train.perpusbackend.util.DoogiesRequestLogger" level="DEBUG" additivity="false">
+        <appender-ref ref="perpus-backend-all"/>
+    </logger>
+	<logger name="train.perpusbackend" level="DEBUG" additivity="false">
+		<appender-ref ref="perpus-backend-all" />
+	</logger>
+	<logger name="train.perpusbackend" level="INFO" additivity="false">
+		<appender-ref ref="perpus-backend-all" />
+	</logger>
+	<logger name="org.springframework" level="WARN" additivity="false">
+		<appender-ref ref="perpus-backend-all" />
+	</logger>
+    <logger name="org.apache.http" level="DEBUG" additivity="false">
+        <appender-ref ref="perpus-backend-all"/>
+    </logger>
+	<root level="ERROR">
+		<appender-ref ref="stdout" />
+	</root>
+	
+</configuration>
